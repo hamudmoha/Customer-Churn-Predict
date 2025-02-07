@@ -1,5 +1,6 @@
 from fastapi import FastAPI
-from fastapi.middleware.cors import CORSMiddleware  # Import CORS middleware
+from fastapi.middleware.cors import CORSMiddleware
+from fastapi.staticfiles import StaticFiles  # Import StaticFiles
 from pydantic import BaseModel
 import pandas as pd
 import joblib
@@ -8,7 +9,7 @@ from sklearn.preprocessing import StandardScaler
 
 # Load the trained model and scaler
 model = joblib.load('best_model.pkl')
-scaler = joblib.load('scaler.pkl')  # Save and load the scaler from training
+scaler = joblib.load('scaler.pkl')
 
 # Initialize FastAPI app
 app = FastAPI()
@@ -16,11 +17,14 @@ app = FastAPI()
 # Add CORS middleware
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["*"],  # Allows all origins (replace "*" with your frontend URL in production)
+    allow_origins=["*"],
     allow_credentials=True,
-    allow_methods=["*"],  # Allows all methods (GET, POST, OPTIONS, etc.)
-    allow_headers=["*"],  # Allows all headers
+    allow_methods=["*"],
+    allow_headers=["*"],
 )
+
+# Mount the static files directory
+app.mount("/", StaticFiles(directory="."), name="static")
 
 # Define input data schema
 class CustomerData(BaseModel):
