@@ -3,7 +3,7 @@ import requests
 import json
 
 # FastAPI endpoint URL
-API_URL = "http://127.0.0.1:8000/predict"
+API_URL = "https://customer-churn-predict.onrender.com/predict"
 
 st.title("Customer Churn Prediction")
 st.write("Enter customer details to predict if they will churn or stay.")
