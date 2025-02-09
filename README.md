@@ -125,6 +125,7 @@ Contributors
 
 Developed by Your Name. Feel free to contribute by submitting pull requests!
 
-For any issues, please open a GitHub issue or contact me.
+below are the link where you can predict the customer churning:
+**https://hamudmoha-customer-churn-predict-frontend-28lldx.streamlit.app/**
 
 🚀 Happy Predicting! 🎯
